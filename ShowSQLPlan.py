@@ -27,8 +27,8 @@ class ShowSQLPlan(object):
 		result.fetchall()
 		
 		#查找上面执行的SQL的SQL_Id和Child_Number
-		sqlStr = "select sql_id,child_number from v$sql "\
-		    + "where sql_text like '%"+ self.keyStr +"%' and sql_text NOT LIKE '%v$sql%' "\
+		sqlStr = "select sql_id,child_number from gv$sql "\
+		    + "where sql_text like '%"+ self.keyStr +"%' and sql_text NOT LIKE '%gv$sql%' "\
 		    + "order by last_load_time desc"
 		result = self.cursor.execute(sqlStr)
 		result = result.fetchone()
